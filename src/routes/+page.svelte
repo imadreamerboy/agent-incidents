@@ -129,6 +129,7 @@
     <h1 id="page-title" tabindex="-1">Agent incidents</h1>
     <p class="intro">Published reports describe AI agents leaking credentials, bypassing access restrictions and exchanging messages on public websites. This timeline brings those cases together, with their sources, dates and open questions.</p>
     <p class="intro-links"><a href="/about/#methodology">How the collection works</a><a href="/roadmap/">What’s next</a></p>
+    <p class="related-resource">For tools, datasets and people researching AI misalignment incidents, explore <a href="https://swarms.wiki/">swarms.wiki ↗</a>.</p>
   </header>
 
   <div class="controls">
@@ -195,6 +196,8 @@
   .intro { margin: 16px 0 0; font-size: 17px; line-height: 1.5; color: var(--secondary); max-width: 76ch; }
   .intro-links { display: flex; flex-wrap: wrap; gap: 8px 24px; margin: 16px 0 0; font-size: 14px; }
   .intro-links a { text-underline-offset: 3px; }
+  .related-resource { margin: 16px 0 0; font-size: 14px; line-height: 1.6; color: var(--secondary); max-width: 76ch; }
+  .related-resource a { color: var(--ink); white-space: nowrap; }
   .controls { margin-bottom: 36px; }
   .view-controls { display: flex; align-items: center; justify-content: space-between; gap: 16px; border-bottom: 1px solid var(--rule); }
   .order-control { display: grid; place-items: center; flex-shrink: 0; width: 44px; height: 44px; padding: 0; border: 0; border-radius: 5px; background: transparent; color: var(--ink); }
