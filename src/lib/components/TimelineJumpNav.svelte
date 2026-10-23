@@ -147,7 +147,7 @@
   @media (min-width: 1280px) {
     .jump-nav {
       display: block; position: fixed; z-index: 20; top: 50%; width: 36px;
-      right: max(4px, calc((100vw - 1280px) / 2 - 56px)); transform: translateY(-50%);
+      right: max(4px, calc((100% - var(--site-max-width)) / 2 + 4px)); transform: translateY(-50%);
     }
     ol { list-style: none; margin: 0; padding: 0; }
     li { margin: 0; padding: 0; }

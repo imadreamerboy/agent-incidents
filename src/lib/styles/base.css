@@ -11,6 +11,7 @@
   --rule: #e5e5e5;
   --edge: #767676;
   --hover: #f3f3f3;
+  --site-max-width: 1440px;
 }
 
 * { box-sizing: border-box; }

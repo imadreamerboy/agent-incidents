@@ -34,7 +34,7 @@
   </footer>
 </div>
 <style>
-  .site-shell { max-width: 1280px; margin: 0 auto; padding: 0 40px 32px; }
+  .site-shell { max-width: var(--site-max-width); margin: 0 auto; padding: 0 40px 32px; }
   .site-header { display: flex; justify-content: space-between; align-items: center; gap: 16px 40px; padding: 22px 0; border-bottom: 1px solid var(--rule); }
   .site-name { font-size: 19px; font-weight: 650; text-decoration: none; letter-spacing: -.03em; }
   .site-nav { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 26px; font-size: 15px; }
@@ -46,6 +46,7 @@
   .footer-nav { display: flex; flex-wrap: wrap; gap: 8px 24px; }
   .github-link { display: inline-flex; align-items: center; gap: 6px; }
   .footer-meta { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px 24px; margin: 20px 0 0; }
+  @media(min-width:1280px) { .site-shell { padding-right: 64px; } }
   @media(max-width:1023px) { .site-shell { padding: 0 24px 28px; } }
   @media(max-width:639px) { .site-shell { padding: 0 20px 24px; } .site-header { display: block; padding: 20px 0 10px; } .site-nav { gap: 4px 20px; margin-top: 14px; font-size: 14px; } .site-footer { margin-top: 40px; padding-right: 0; } }
   @media(max-width:359px) { .site-shell { padding-right: 16px; padding-left: 16px; } }

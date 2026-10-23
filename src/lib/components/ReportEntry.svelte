@@ -30,7 +30,7 @@
 
 <style>
   .context-label { margin: 8px 0 0; font-size: 13px; line-height: 1.5; color: var(--secondary); }
-  article { position: relative; display: grid; grid-template-columns: minmax(0, 1fr) 180px; gap: 0 48px; scroll-margin-top: 32px; }
+  article { position: relative; display: grid; grid-template-columns: minmax(0, 1fr) 160px; gap: 0 48px; scroll-margin-top: 32px; }
   .node { position: absolute; top: 7px; left: -37px; width: 11px; height: 11px; background: var(--ink); border: 1px solid var(--ink); border-radius: 50%; }
   .unknown .node { background: var(--paper); }
   .context { margin: 4px 0 6px; font-size: 16px; line-height: 1.5; overflow-wrap: anywhere; }

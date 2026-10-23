@@ -39,7 +39,7 @@
 
 <style>
   .context-label { margin: 8px 0 0; font-size: 13px; line-height: 1.5; color: var(--secondary); }
-  article { position: relative; display: grid; grid-template-columns: 136px minmax(0, 1fr) 180px; gap: 0 48px; scroll-margin-top: 32px; }
+  article { position: relative; display: grid; grid-template-columns: 136px minmax(0, 1fr) 160px; gap: 0 48px; scroll-margin-top: 32px; }
   .primary-date { font-size: 18px; font-weight: 500; line-height: 1.4; font-variant-numeric: tabular-nums; overflow-wrap: anywhere; }
   .date-caption { display: block; margin-bottom: 4px; color: var(--secondary); font-size: 13px; font-weight: 400; line-height: 1.5; }
   .node { position: absolute; top: 7px; left: 147px; width: 11px; height: 11px; background: var(--ink); border: 1px solid var(--ink); border-radius: 50%; }
@@ -49,10 +49,11 @@
   .permalink { text-decoration: none; }
   article:target h3 .permalink { text-decoration: underline; text-decoration-thickness: 2px; }
   @media (hover: hover) and (pointer: fine) { .permalink:hover { text-decoration: underline; text-decoration-thickness: 1px; } }
-  .summary { margin: 8px 0 0; font-size: 17px; line-height: 1.5; max-width: 62ch; overflow-wrap: anywhere; }
+  .summary { margin: 8px 0 0; font-size: 17px; line-height: 1.5; max-width: 70ch; overflow-wrap: anywhere; }
   .dates { margin: 0; border-left: 1px solid var(--rule); padding-left: 20px; align-self: start; font-size: 14px; line-height: 1.45; font-variant-numeric: tabular-nums; }
   dt { color: var(--secondary); }
   dd { margin: 2px 0 0; font-size: 15px; overflow-wrap: anywhere; }
+  @media (min-width: 1280px) { .summary { font-size: clamp(17px, 1.32vw, 19px); } }
   @media (max-width: 1023px) {
     article { grid-template-columns: 120px minmax(0, 1fr); gap: 0 40px; }
     .node { left: 131px; }
