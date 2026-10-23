@@ -4,6 +4,8 @@ A sourced timeline of unexpected AI-agent actions. Incident dates and reporting 
 
 This repository contains the website and its reviewed content: the timeline, About and methodology, Roadmap, and tip/correction page.
 
+On wide screens, a compact jump rail shows your position in the timeline. Hover or focus a mark to preview its title and date, then select it to jump to that entry. The rail follows the selected filters, date view and sort order.
+
 ## Run locally
 
 Use Node.js 24 LTS and npm 11, as specified in `.nvmrc` and `package.json`.

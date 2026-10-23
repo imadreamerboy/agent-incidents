@@ -47,6 +47,15 @@
       "url": "https://www.anthropic.com/news/improving-alignment-security-efforts",
       "publishedDate": "2026-08-31",
       "evidenceNote": "Anthropic acknowledges the AISI report and its Mythos 5 configuration; same provider source family as the model attribution, not independent confirmation."
+    },
+    {
+      "id": "anthropic-alignment-assessment",
+      "label": "Anthropic — An alignment assessment of the UK AISI cybertesting incident",
+      "publisher": "Anthropic",
+      "kind": "official-report",
+      "url": "https://www.anthropic.com/research/alignment-assessment-ukaisi",
+      "publishedDate": "2026-10-23",
+      "evidenceNote": "Anthropic's follow-up alignment assessment mainly analyses one Mythos 5 run involving a malicious GitHub pull request and social engineering, using transcript interpretation and resampling; it reviews eight other transcripts more lightly without resampling. Same provider source family as Anthropic's earlier acknowledgement, not independent confirmation. The page displays “Published Oct 23, 2026”."
     }
   ],
   "events": [

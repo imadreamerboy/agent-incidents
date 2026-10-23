@@ -3,13 +3,14 @@
   import { page } from '$app/state';
   import { afterNavigate, pushState, replaceState } from '$app/navigation';
   import type { Incident, Provider } from '$lib/content/schema';
-  import { filterIncidents, parseView, serializeView, toggleProvider, type ViewState } from '$lib/timeline';
+  import { filterIncidents, formatIncidentDate, groupIncidents, groupReports, parseView, serializeView, toggleProvider, type ViewState } from '$lib/timeline';
   import ChronologyControl from '$lib/components/ChronologyControl.svelte';
   import ProviderFilters from '$lib/components/ProviderFilters.svelte';
   import Timeline from '$lib/components/Timeline.svelte';
   import ReportTimeline from '$lib/components/ReportTimeline.svelte';
   import PageMeta from '$lib/components/PageMeta.svelte';
   import BackToTop from '$lib/components/BackToTop.svelte';
+  import TimelineJumpNav from '$lib/components/TimelineJumpNav.svelte';
 
   let { data }: { data: { incidents: Incident[]; providers: Provider[]; demo: boolean; updatedDate: string } } = $props();
   let currentUrl = $state<string | null>(null);
@@ -19,6 +20,13 @@
   let view = $derived(parsed.state);
   let viewError = $derived(parsed.error);
   let incidents = $derived(viewError ? [] : filterIncidents(data.incidents, view.providerIds));
+  let jumpItems = $derived(view.mode === 'reported'
+    ? groupReports(incidents, view.order).flatMap((group) => group.entries.map((entry) => ({
+        id: entry.id, label: entry.source.label, date: group.label, detail: entry.incident.title
+      })))
+    : groupIncidents(incidents, view.order).flatMap((group) => group.incidents.map((incident) => ({
+        id: incident.id, label: incident.title, date: group.label ?? formatIncidentDate(incident.incidentDate)
+      }))));
   let noun = $derived(data.demo ? 'examples' : 'incidents');
   let filtered = $derived(!!view.providerIds.length);
   let incidentCount = $derived(filtered ? `${incidents.length} of ${data.incidents.length} ${noun}` : `${incidents.length} ${incidents.length === 1 ? (data.demo ? 'example' : 'incident') : noun}`);
@@ -158,6 +166,8 @@
   </div>
 
   <p class="sr-only" role="status" aria-live="polite" aria-atomic="true">{mounted ? viewError ? 'This timeline view is unavailable. Reset the view to show the timeline.' : `${count}. ${view.mode === 'incident' ? 'Incident date' : 'Reporting date'}. ${ordering}.` : ''}</p>
+
+  <TimelineJumpNav items={jumpItems} />
 
   <div id="timeline" tabindex="-1">
     {#if viewError}
