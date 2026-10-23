@@ -4,7 +4,7 @@ A sourced timeline of unexpected AI-agent actions. Incident dates and reporting 
 
 This repository contains the website and its reviewed content: the timeline, About and methodology, Roadmap, and tip/correction page.
 
-On wide screens, a compact jump rail shows your position in the timeline. Hover or focus a mark to preview its title and date, then select it to jump to that entry. The rail follows the selected filters, date view and sort order.
+On wide screens, a compact jump rail shows your position in the timeline. In Incidents, each mark previews an entry's title and date. In Reports, each mark previews a publication month and source count, then jumps to that month's first report. Undated sources have a separate mark. The rail follows the selected filters, date view and sort order.
 
 ## Run locally
 

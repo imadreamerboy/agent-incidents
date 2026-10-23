@@ -8,6 +8,7 @@ export type IncidentGroup = { id: 'dated' | 'unknown'; label: string | null; inc
 export type EventGroup = { id: 'dated' | 'unknown'; label: string | null; events: IncidentEvent[] };
 export type ReportEntry = { id: string; incident: Incident; source: Source };
 export type ReportGroup = { id: string; label: string; date: string | null; entries: ReportEntry[] };
+export type ReportMonthGroup = { id: string; month: string | null; label: string; sourceCount: number };
 
 export function parseView(search: URLSearchParams, providers: Provider[]): { state: ViewState; error: string | null } {
   const initial: ViewState = { mode: 'incident', order: 'desc', providerIds: [] };
@@ -106,7 +107,28 @@ export function groupReports(incidents: Incident[], order: Order = 'desc'): Repo
   return groups;
 }
 
+/** Navigation only: each month targets its first source in the visible daily chronology. */
+export function groupReportMonths(incidents: Incident[], order: Order = 'desc'): ReportMonthGroup[] {
+  const groups = new Map<string | null, ReportMonthGroup>();
+  for (const group of groupReports(incidents, order)) {
+    const month = group.date?.slice(0, 7) ?? null;
+    const existing = groups.get(month);
+    if (existing) existing.sourceCount += group.entries.length;
+    else groups.set(month, {
+      id: group.entries[0].id,
+      month,
+      label: month ? formatMonth(month) : group.label,
+      sourceCount: group.entries.length
+    });
+  }
+  return [...groups.values()];
+}
+
 const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+function formatMonth(date: string): string {
+  const [year, month] = date.split('-');
+  return `${months[Number(month) - 1]} ${year}`;
+}
 export function formatDate(date: string): string {
   const [year, month, day] = date.split('-');
   return `${Number(day)} ${months[Number(month) - 1]} ${year}`;
@@ -114,7 +136,7 @@ export function formatDate(date: string): string {
 export function formatIncidentDate(date: IncidentDate): string {
   switch (date.kind) {
     case 'exact': return formatDate(date.date);
-    case 'month': { const [year, month] = date.month.split('-'); return `${months[Number(month) - 1]} ${year}`; }
+    case 'month': return formatMonth(date.month);
     case 'range': return `${formatDate(date.start)} – ${formatDate(date.end)}`;
     case 'approximate': return date.label;
     case 'unknown': return 'Unknown';

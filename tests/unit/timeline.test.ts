@@ -1,7 +1,7 @@
 import { beforeAll, describe, expect, it } from 'vitest';
 import type { Incident, IncidentEvent, Provider } from '../../src/lib/content/schema';
 import { loadCollection } from '../../src/lib/server/content';
-import { chronologyDate, filterIncidents, formatDate, formatIncidentDate, groupIncidents, groupReports, groupEvents, parseView, serializeView, toggleProvider } from '../../src/lib/timeline';
+import { chronologyDate, filterIncidents, formatDate, formatIncidentDate, groupIncidents, groupReports, groupReportMonths, groupEvents, parseView, serializeView, toggleProvider } from '../../src/lib/timeline';
 
 let incidents: Incident[];
 let providers: Provider[];
@@ -159,6 +159,50 @@ describe('publication chronology', () => {
     const source = filtered[0].sources[0];
     const collisionCandidates = [{ ...filtered[0], id: 'a-b', sources: [{ ...source, id: 'c' }] }, { ...filtered[0], id: 'a', sources: [{ ...source, id: 'b-c' }] }];
     expect(new Set(groupReports(collisionCandidates).flatMap((group) => group.entries.map((entry) => entry.id))).size).toBe(2);
+  });
+});
+
+describe('report month navigation', () => {
+  it('counts sources per publication month and targets the first visible report in each order', () => {
+    const records = incidents.filter((incident) => ['example-incident-a', 'example-incident-b'].includes(incident.id));
+    expect(groupReportMonths(records)).toEqual([
+      { id: 'report--example-incident-a--example-follow-up', month: '2026-11', label: 'Nov 2026', sourceCount: 1 },
+      { id: 'report--example-incident-b--example-report', month: '2026-09', label: 'Sep 2026', sourceCount: 2 },
+      { id: 'report--example-incident-a--example-repository', month: null, label: 'Publication date unknown', sourceCount: 1 }
+    ]);
+    expect(groupReportMonths(records, 'asc')).toEqual([
+      { id: 'report--example-incident-a--example-report', month: '2026-09', label: 'Sep 2026', sourceCount: 2 },
+      { id: 'report--example-incident-a--example-follow-up', month: '2026-11', label: 'Nov 2026', sourceCount: 1 },
+      { id: 'report--example-incident-a--example-repository', month: null, label: 'Publication date unknown', sourceCount: 1 }
+    ]);
+    expect(groupReports(records).map((group) => group.date)).toEqual(['2026-11-18', '2026-09-20', '2026-09-18', null]);
+  });
+  it('keeps years distinct and preserves the daily chronology identity order for same-day targets', () => {
+    const incident = incidents.find((item) => item.id === 'example-incident-a')!;
+    const source = incident.sources[0];
+    const records = [{ ...incident, sources: [
+      { ...source, id: 'example-z', publishedDate: '2026-09-18' },
+      { ...source, id: 'example-earlier-year', publishedDate: '2025-09-18' },
+      { ...source, id: 'example-a', publishedDate: '2026-09-18' }
+    ] }];
+    const descending = groupReportMonths(records);
+    expect(descending.map((group) => group.month)).toEqual(['2026-09', '2025-09']);
+    expect(descending.map((group) => group.label)).toEqual(['Sep 2026', 'Sep 2025']);
+    expect(descending.map((group) => group.sourceCount)).toEqual([2, 1]);
+    expect(descending[0].id).toBe('report--example-incident-a--example-a');
+    expect(groupReportMonths(records, 'asc').map((group) => group.id)).toEqual([...descending].reverse().map((group) => group.id));
+    expect(records[0].sources.map((item) => item.id)).toEqual(['example-z', 'example-earlier-year', 'example-a']);
+  });
+  it('uses the filtered provider union without duplicating sources or retaining empty months', () => {
+    const records = incidents.filter((incident) => ['example-incident-a', 'example-incident-b'].includes(incident.id));
+    const onlyB = groupReportMonths(filterIncidents(records, ['example-lab-b']));
+    expect(onlyB).toEqual([{ id: 'report--example-incident-b--example-report', month: '2026-09', label: 'Sep 2026', sourceCount: 1 }]);
+    const union = groupReportMonths(filterIncidents(records, ['example-lab-a', 'example-lab-b']));
+    expect(union.reduce((count, group) => count + group.sourceCount, 0)).toBe(4);
+    const shared = incidents.filter((incident) => incident.id === 'example-multiple-providers');
+    expect(groupReportMonths(filterIncidents(shared, ['example-lab-a', 'example-lab-b'])).map((group) => group.sourceCount)).toEqual([3]);
+    expect(groupReportMonths(filterIncidents(records, ['example-empty']))).toEqual([]);
+    expect(groupReportMonths([])).toEqual([]);
   });
 });
 

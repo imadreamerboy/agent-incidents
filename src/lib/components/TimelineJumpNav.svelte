@@ -1,6 +1,6 @@
 <script lang="ts">
   type JumpItem = { id: string; label: string; date: string; detail?: string };
-  let { items }: { items: JumpItem[] } = $props();
+  let { items, ariaLabel = 'Timeline entries' }: { items: JumpItem[]; ariaLabel?: string } = $props();
   let map: HTMLOListElement | undefined = $state();
   let previewBox: HTMLDivElement | undefined = $state();
   let activeId = $state('');
@@ -114,7 +114,7 @@
 </script>
 
 {#if items.length > 0}
-  <nav class="jump-nav" aria-label="Timeline entries">
+  <nav class="jump-nav" aria-label={ariaLabel}>
     <ol class="jump-map" bind:this={map} style:height={`${items.length * 12}px`}>
       {#each items as item, index (item.id)}
         <li>
