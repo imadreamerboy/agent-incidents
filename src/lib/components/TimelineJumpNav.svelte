@@ -115,7 +115,7 @@
 
 {#if items.length > 0}
   <nav class="jump-nav" aria-label="Timeline entries">
-    <ol class="jump-map" bind:this={map} style:height={`${Math.min(280, items.length * 20)}px`}>
+    <ol class="jump-map" bind:this={map} style:height={`${items.length * 12}px`}>
       {#each items as item, index (item.id)}
         <li>
           <a href={`#${item.id}`} data-entry-id={item.id} aria-label={accessibleName(item, index)}
@@ -146,25 +146,25 @@
   .jump-nav, .jump-label { display: none; }
   @media (min-width: 1280px) {
     .jump-nav {
-      display: block; position: fixed; z-index: 20; top: 50%; width: 36px;
+      display: block; position: fixed; z-index: 20; top: 50%; width: 44px;
       right: max(4px, calc((100% - var(--site-max-width)) / 2 + 4px)); transform: translateY(-50%);
     }
     ol { list-style: none; margin: 0; padding: 0; }
     li { margin: 0; padding: 0; }
     .jump-map {
       display: flex; flex-direction: column; max-height: calc(100dvh - 144px);
-      border-right: 1px solid var(--rule);
+      box-shadow: inset -1px 0 0 var(--rule);
     }
     .jump-map li { flex: 1; min-height: 0; }
     .jump-map a {
-      display: flex; align-items: center; justify-content: flex-end; width: 36px; height: 100%; padding-right: 4px;
+      display: flex; align-items: center; justify-content: flex-end; width: 100%; height: 100%; padding-right: 4px;
     }
     .jump-map a > span {
-      width: 22px; height: 3px; background: var(--edge); transform: scaleX(0.5) scaleY(0.3333);
+      width: 28px; height: 4px; background: var(--edge); transform: scaleX(0.5714) scaleY(0.5);
       transform-origin: right center; transition: transform 120ms ease, opacity 120ms ease;
     }
     .jump-map a:not([aria-current]):is(:hover, :focus-visible) > span {
-      background: var(--secondary); transform: scaleX(0.7273) scaleY(0.6667);
+      background: var(--secondary); transform: scaleX(0.8571) scaleY(0.75);
     }
     .jump-map a[aria-current] > span { background: var(--ink); transform: none; }
     .jump-map a:focus-visible { outline-offset: -2px; }
