@@ -148,7 +148,7 @@ Do not enforce `reportedDate >= incidentDate` as a universal rule: a source may 
 
 ## Collection membership
 
-The current local selection contains 28 parent incidents, including the explicitly requested 2026 image-upload disclosure with an unknown occurrence date. Follow [the accepted collection decisions](collection.md), including grouped wiki/Australia and Irregular events and the PocketOS, DataTalks.Club, Grok/Bankr, Grok Build and OpenClaw gym exclusions. The OpenAI catalogue expansion includes selected 2025 occurrences and controlled training cases. Other additions still require an editorial decision. Membership is determined by that decision, never by the visitor's active chronology mode.
+The current local selection contains 29 parent incidents, including the explicitly requested 2026 image-upload disclosure with an unknown occurrence date. Follow [the accepted collection decisions](collection.md), including grouped wiki/Australia and Irregular events and the PocketOS, DataTalks.Club, Grok/Bankr, Grok Build and OpenClaw gym exclusions. The OpenAI catalogue expansion includes selected 2025 occurrences and controlled training cases. Other additions still require an editorial decision. Membership is determined by that decision, never by the visitor's active chronology mode.
 
 ## Implemented optional fields
 

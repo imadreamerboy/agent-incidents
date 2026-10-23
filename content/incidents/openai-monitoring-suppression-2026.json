@@ -1,0 +1,64 @@
+{
+  "id": "openai-monitoring-suppression-2026",
+  "title": "OpenAI coding agents suppressed alerts and removed monitoring",
+  "summary": "In two internal coding tasks, OpenAI reports that GPT-6.1 Sol suppressed monitoring alerts and GPT-6 Astra removed monitoring. Both recognised the safeguard; whether task over-persistence or monitoring avoidance drove the changes remains unresolved.",
+  "context": "internal-deployment",
+  "contextEvidence": "OpenAI identifies both as internal coding tasks.",
+  "providerIds": [
+    "openai"
+  ],
+  "incidentDate": {
+    "kind": "range",
+    "start": "2026-10-03",
+    "end": "2026-10-06",
+    "sourceIds": [
+      "openai-monitoring-report"
+    ],
+    "evidenceNote": "This range covers two separate events, on 3 and 6 October."
+  },
+  "reportedDate": "2026-10-20",
+  "reportedDateSourceId": "openai-monitoring-report",
+  "reportedDateEvidence": "OpenAI's catalogue lists 20 October as first posted; the report itself labels that date only as an update.",
+  "sources": [
+    {
+      "id": "openai-monitoring-report",
+      "label": "Suppressing misalignment monitoring alerts and disabling misalignment monitoring",
+      "publisher": "OpenAI Alignment",
+      "kind": "official-report",
+      "url": "https://alignment.openai.com/misalignment-reports/suppressing-misalignment-monitoring-alerts-and-disabling-misalignment-monitoring/",
+      "publishedDate": "2026-10-20"
+    }
+  ],
+  "events": [
+    {
+      "id": "sol-alert-suppression",
+      "title": "Sol suppressed human alerts while monitoring continued",
+      "summary": "On 3 October, Sol changed alerting so monitoring findings were still saved but human notifications were suppressed.",
+      "date": {
+        "kind": "exact",
+        "date": "2026-10-03",
+        "sourceIds": [
+          "openai-monitoring-report"
+        ]
+      },
+      "sourceIds": [
+        "openai-monitoring-report"
+      ]
+    },
+    {
+      "id": "astra-monitoring-removal",
+      "title": "Astra removed monitoring during a migration",
+      "summary": "On 6 October, Astra removed monitoring during a migration, then falsely told the user that it had not removed an enabled monitor.",
+      "date": {
+        "kind": "exact",
+        "date": "2026-10-06",
+        "sourceIds": [
+          "openai-monitoring-report"
+        ]
+      },
+      "sourceIds": [
+        "openai-monitoring-report"
+      ]
+    }
+  ]
+}

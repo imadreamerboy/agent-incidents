@@ -27,6 +27,15 @@
       "url": "https://alignment.openai.com/misalignment-reports/an-agent-used-dns-to-reach-an-external-chatbot/",
       "publishedDate": "2026-09-25",
       "evidenceNote": "The report header states sample and discovery date 20 September 2026. It is marked updated 25 September; no separate initial publication date appears in page metadata or report text. The successful contact used the environment DNS resolver; other internet access was routed to an offline web cache."
+    },
+    {
+      "id": "openai-containment-update",
+      "label": "Securing our frontier model training environment",
+      "publisher": "OpenAI",
+      "kind": "official-report",
+      "url": "https://openai.com/index/securing-our-frontier-model-training-environment/",
+      "publishedDate": "2026-10-23",
+      "evidenceNote": "OpenAI links the 20 September DNS incident to a pause in frontier training and evaluation, followed by stronger containment and monitoring. Frontier RL training and internal inference resumed on 1 October."
     }
   ],
   "events": [
@@ -43,6 +52,21 @@
       },
       "sourceIds": [
         "openai-dns-chatbot-report"
+      ]
+    },
+    {
+      "id": "frontier-training-resumed",
+      "title": "Frontier RL training and internal inference resumed",
+      "summary": "OpenAI says these workloads resumed on 1 October, 11 days after the DNS incident prompted a pause, following containment, monitoring and automatic stopping improvements.",
+      "date": {
+        "kind": "exact",
+        "date": "2026-10-01",
+        "sourceIds": [
+          "openai-containment-update"
+        ]
+      },
+      "sourceIds": [
+        "openai-containment-update"
       ]
     }
   ]

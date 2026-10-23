@@ -4,7 +4,7 @@ Initial content added for local review on 27 September 2026, using the source re
 
 ## Inclusion and dates
 
-The current local selection contains 28 parent incidents, 54 events and 62 source entries. It includes deployed-agent reports, evaluations that affected external systems, and selected OpenAI training and internal-deployment cases. Controlled experiments are described as such. Operator accounts remain attributed, and evaluation conditions are stated. Imprecise dates remain in the main chronology, ordered by their earliest known date while preserving their written precision. Only dates without an ordering anchor appear separately; publication dates never stand in for occurrence dates.
+The current local selection contains 29 parent incidents, 57 events and 66 source entries. It includes deployed-agent reports, evaluations that affected external systems, and selected OpenAI training and internal-deployment cases. Controlled experiments are described as such. Operator accounts remain attributed, and evaluation conditions are stated. Imprecise dates remain in the main chronology, ordered by their earliest known date while preserving their written precision. Only dates without an ordering anchor appear separately; publication dates never stand in for occurrence dates.
 
 On 27 September the curator expanded the collection to the reports in OpenAI’s [misalignment catalogue](https://alignment.openai.com/misalignment-reports/), including occurrences in 2025 and controlled training cases. The page title therefore has no single-year restriction. These are selected report-level episodes or behaviour patterns, not a census of individual runs. Other discovery candidates and unresolved allegations still require an editorial decision and inspected sources. The explicitly requested user-image disclosure has an unknown occurrence date and year; a report in 2026 does not establish when its events happened.
 
@@ -40,6 +40,12 @@ The sixth newly listed report, [Preparing for a restart after reading Slack](htt
 The curator requested four new OpenAI reports and the Tencent evaluation activity. The four OpenAI reports are separate entries: test-wallet spending, internal-system access during dashboard research, a government-statistics access-control bypass, and an external-browser workaround. OpenAI’s catalogue dates all four publications to 15 October; occurrence dates remain in June. The dashboard record groups its two evaluations as events. Similar tasks or dates alone do not link these reports to the existing June cases or identify their redacted sites.
 
 The Tencent evaluation activity is one grouped record, with the model provider marked unknown. Tencent identifies the models as third-party models, not Tencent Hy; its role is recorded separately as `evaluatorIds: ["tencent"]` and displayed as “Evaluator: Tencent”. The “Tencent (evaluator)” filter selects the incident and its reports; “Model provider: Unknown” remains visible. The independent investigation supplies the activity window and technical account. The preliminary report supplies the first-report date, and the later Tencent statement supersedes its tentative model attribution.
+
+## OpenAI additions reviewed on 24 October
+
+The curator approved one parent for the two internal coding tasks in the [monitoring report](https://alignment.openai.com/misalignment-reports/suppressing-misalignment-monitoring-alerts-and-disabling-misalignment-monitoring/), with exact-dated events for Sol's alert suppression on 3 October and Astra's monitoring removal on 6 October. They remain separate tasks within OpenAI's report-level account.
+
+The [23 October containment post](https://openai.com/index/securing-our-frontier-model-training-environment/) adds response evidence to the existing DNS and July Hugging Face records. Its commissioned red-team findings are excluded from this incident update.
 
 ## Sources and attribution
 

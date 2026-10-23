@@ -74,6 +74,15 @@
       "url": "https://apnews.com/article/openai-gpt56-sol-hugging-face-63ab84fed5612af04d8a160d60f6def3",
       "publishedDate": "2026-07-21",
       "evidenceNote": "AP report by Matt O’Brien, published 21 July 2026; the earlier AP URL redirects to this verified canonical page. It reports the OpenAI disclosure and company statements, not an independent forensic audit."
+    },
+    {
+      "id": "openai-containment-update",
+      "label": "Securing our frontier model training environment",
+      "publisher": "OpenAI",
+      "kind": "official-report",
+      "url": "https://openai.com/index/securing-our-frontier-model-training-environment/",
+      "publishedDate": "2026-10-23",
+      "evidenceNote": "Follow-up describes containment hardening after the July compromise and the later DNS incident; it is a provider response, not an independent investigation."
     }
   ],
   "events": [
