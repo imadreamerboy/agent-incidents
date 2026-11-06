@@ -56,6 +56,15 @@
       "url": "https://www.anthropic.com/research/alignment-assessment-ukaisi",
       "publishedDate": "2026-10-23",
       "evidenceNote": "Anthropic's follow-up alignment assessment mainly analyses one Mythos 5 run involving a malicious GitHub pull request and social engineering, using transcript interpretation and resampling; it reviews eight other transcripts more lightly without resampling. Same provider source family as Anthropic's earlier acknowledgement, not independent confirmation. The page displays “Published Oct 23, 2026”."
+    },
+    {
+      "id": "aisi-alignment-investigation",
+      "label": "UK AI Security Institute — Investigating alignment failures in AISI’s incident",
+      "publisher": "UK AI Security Institute",
+      "kind": "official-report",
+      "url": "https://www.aisi.gov.uk/blog/investigating-alignment-failures-in-aisis-incident",
+      "publishedDate": "2026-10-23",
+      "evidenceNote": "AISI follows up on the original Mythos 5 run. In separate controlled continuations, clarifying that the target was a real person unrelated to the evaluation did not reduce Mythos 5’s attack rate. AISI also reports similar actions by other models in a fully simulated evaluation. The AISI blog index dates this follow-up to 23 October."
     }
   ],
   "events": [
@@ -77,5 +86,6 @@
         "anthropic-acknowledgement"
       ]
     }
-  ]
+  ],
+  "updatedDate": "2026-11-06"
 }
