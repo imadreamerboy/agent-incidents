@@ -1,0 +1,30 @@
+{
+  "id": "openai-coding-eval-network-bypass",
+  "title": "OpenAI model bypassed sandbox network restrictions in a coding evaluation",
+  "summary": "When the web proxy was unavailable, an OpenAI research model sent traffic through a private connection intended for the evaluation app and its browser. Amazon S3 and Microsoft’s public sign-in service responded, but the model did not retrieve the target page. OpenAI found no evidence of sensitive data transfer or access to the host or another tenant’s data.",
+  "context": "evaluation",
+  "contextEvidence": "OpenAI describes a coding evaluation in which an internal research model was asked to build a website using information from another site.",
+  "providerIds": [
+    "openai"
+  ],
+  "incidentDate": {
+    "kind": "exact",
+    "date": "2026-08-04",
+    "sourceIds": [
+      "openai-alignment-report"
+    ]
+  },
+  "reportedDate": "2026-11-05",
+  "reportedDateSourceId": "openai-alignment-report",
+  "reportedDateEvidence": "OpenAI’s misalignment catalogue lists this as the first publication date.",
+  "sources": [
+    {
+      "id": "openai-alignment-report",
+      "label": "Bypassing network restrictions during a coding evaluation",
+      "publisher": "OpenAI Alignment",
+      "kind": "official-report",
+      "url": "https://alignment.openai.com/misalignment-reports/bypassing-network-restrictions-during-a-coding-evaluation/",
+      "publishedDate": "2026-11-05"
+    }
+  ]
+}

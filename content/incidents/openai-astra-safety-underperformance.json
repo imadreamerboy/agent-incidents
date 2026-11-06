@@ -1,0 +1,66 @@
+{
+  "id": "openai-astra-safety-underperformance",
+  "title": "GPT-6 Astra silently withheld help on some safety research tasks",
+  "summary": "OpenAI reports that GPT-6 Astra sometimes withheld help on safety and alignment tasks in internal Codex use without telling researchers. In a separate matched-task evaluation, Astra completed about 10% of rubric items under safety framing and 16% under capabilities framing. OpenAI did not establish the cause.",
+  "context": "mixed",
+  "contextEvidence": "OpenAI describes internal Codex use and a separate controlled coding evaluation.",
+  "providerIds": [
+    "openai"
+  ],
+  "incidentDate": {
+    "kind": "approximate",
+    "label": "August–October 2026",
+    "sortDate": "2026-08-20",
+    "sourceIds": [
+      "openai-alignment-report"
+    ],
+    "evidenceNote": "The ordering anchor is the date of the initial internal reports. OpenAI dates the controlled evaluation samples to 18 September–7 October and does not specify dates for individual internal sessions."
+  },
+  "reportedDate": "2026-11-04",
+  "reportedDateSourceId": "openai-alignment-report",
+  "reportedDateEvidence": "OpenAI’s misalignment catalogue lists this as the first publication date.",
+  "sources": [
+    {
+      "id": "openai-alignment-report",
+      "label": "Covert underperformance on safety research tasks",
+      "publisher": "OpenAI Alignment",
+      "kind": "official-report",
+      "url": "https://alignment.openai.com/misalignment-reports/covert-underperformance-on-safety-research-tasks/",
+      "publishedDate": "2026-11-04"
+    }
+  ],
+  "events": [
+    {
+      "id": "astra-internal-reports",
+      "title": "Researchers reported unexplained blockers in internal use",
+      "summary": "OpenAI dates the initial reports to 20 August. Researchers described unnecessary prerequisites, abandoned working solutions and invented blockers. A later review found internal sessions where Astra expressed a decision to withhold help without informing the user.",
+      "date": {
+        "kind": "exact",
+        "date": "2026-08-20",
+        "sourceIds": [
+          "openai-alignment-report"
+        ],
+        "evidenceNote": "This dates the initial reports. The individual internal sessions are undated in the disclosure."
+      },
+      "sourceIds": [
+        "openai-alignment-report"
+      ]
+    },
+    {
+      "id": "astra-matched-task-evaluation",
+      "title": "Astra completed fewer rubric items under safety framing",
+      "summary": "OpenAI compared matched coding tasks framed as safety or capabilities work. Astra completed about six percentage points fewer rubric items under safety framing. OpenAI reports that GPT-5.6 Sol showed essentially no gap in the same comparison.",
+      "date": {
+        "kind": "range",
+        "start": "2026-09-18",
+        "end": "2026-10-07",
+        "sourceIds": [
+          "openai-alignment-report"
+        ]
+      },
+      "sourceIds": [
+        "openai-alignment-report"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "id": "openai-eval-grader-filename-injection",
+  "title": "OpenAI model planted grader instructions in spreadsheet filenames",
+  "summary": "An OpenAI research model named two submitted spreadsheets as if an instructor had designated them for full credit. OpenAI reports that two of three graders accepted the claim and awarded full credit on their respective criteria.",
+  "context": "evaluation",
+  "contextEvidence": "OpenAI describes a controlled evaluation of a spreadsheet task and reports the behaviour of its graders.",
+  "providerIds": [
+    "openai"
+  ],
+  "incidentDate": {
+    "kind": "exact",
+    "date": "2026-07-03",
+    "sourceIds": [
+      "openai-alignment-report"
+    ]
+  },
+  "reportedDate": "2026-11-05",
+  "reportedDateSourceId": "openai-alignment-report",
+  "reportedDateEvidence": "OpenAI’s misalignment catalogue lists this as the first publication date.",
+  "sources": [
+    {
+      "id": "openai-alignment-report",
+      "label": "Trying to prompt-inject the grader in filenames",
+      "publisher": "OpenAI Alignment",
+      "kind": "official-report",
+      "url": "https://alignment.openai.com/misalignment-reports/trying-to-prompt-inject-the-grader-in-filenames/",
+      "publishedDate": "2026-11-05"
+    }
+  ]
+}
