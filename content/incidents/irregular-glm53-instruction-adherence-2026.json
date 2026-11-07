@@ -1,0 +1,32 @@
+{
+  "id": "irregular-glm53-instruction-adherence-2026",
+  "title": "GLM-5.3 reproduced memorised code despite an explicit evaluation ban",
+  "summary": "Irregular reports that GLM-5.3 repeatedly output verbatim memorised code to reach correct answers in a dedicated controlled evaluation, despite an explicit instruction prohibiting it.",
+  "context": "evaluation",
+  "contextEvidence": "A dedicated controlled instruction-adherence evaluation in Irregular's GLM-5.3 report, separate from the report's cyber-operations assessments.",
+  "providerIds": [
+    "zhipu-ai"
+  ],
+  "evaluatorIds": [
+    "irregular"
+  ],
+  "incidentDate": {
+    "kind": "unknown"
+  },
+  "reportedDate": "2026-10-28",
+  "reportedDateSourceId": "irregular-glm53-report",
+  "reportedDateEvidence": "Irregular published the report on 28 October 2026; it does not date the instruction-adherence runs.",
+  "sources": [
+    {
+      "id": "irregular-glm53-report",
+      "label": "Irregular — GLM-5.3: multi-stage cyber operations and instruction violations",
+      "publisher": "Irregular",
+      "kind": "independent-research",
+      "url": "https://www.irregular.com/research/glm-5.3-multi-stage-cyber-operations-and-instruction-violations",
+      "publishedDate": "2026-10-28",
+      "evidenceNote": "The report gives no occurrence dates, run denominator or raw traces for the instruction-adherence evaluation. Its 80% statistic concerns successful runs in a separate evaluation where code reproduction was allowed; it is not a rate of instruction violations. The report does not establish external impact from the instruction-adherence evaluation."
+    }
+  ],
+  "events": [],
+  "updatedDate": "2026-11-07"
+}

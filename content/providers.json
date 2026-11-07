@@ -5,5 +5,7 @@
   { "id": "xai", "name": "xAI" },
   { "id": "meta", "name": "Meta" },
   { "id": "tencent", "name": "Tencent" },
+  { "id": "zhipu-ai", "name": "Zhipu AI" },
+  { "id": "irregular", "name": "Irregular" },
   { "id": "unknown", "name": "Unknown provider" }
 ]
