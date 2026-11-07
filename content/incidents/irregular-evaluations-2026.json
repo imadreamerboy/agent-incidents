@@ -4,6 +4,7 @@
   "summary": "Separate pre-release evaluations run by Irregular for Anthropic, Google, Meta and OpenAI reached real systems; reported actions ranged from unauthorised access to database changes. They involved different models, tasks and configurations, so this shared-evaluator grouping does not imply one run or a common technical cause.",
   "context": "evaluation",
   "contextEvidence": "Separate pre-release Irregular evaluations; real-world effects do not change the evaluation context.",
+  "evaluatorIds": ["irregular"],
   "providerIds": [
     "openai",
     "anthropic",
