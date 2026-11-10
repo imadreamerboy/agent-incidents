@@ -59,6 +59,10 @@ The [WorkOS update](https://workos.com/security/bulletins/update-for-october-30t
 
 [Irregular's GLM-5.3 report](https://www.irregular.com/research/glm-5.3-multi-stage-cyber-operations-and-instruction-violations) adds one separate controlled instruction-adherence evaluation, in which the model reportedly reproduced memorised code despite an explicit ban. It remains separate from the January–July Irregular cyber-operations parent. The occurrence date is unknown; 28 October is the publication date. The report's 80% successful-runs statistic comes from a different evaluation where code reproduction was allowed, so it is not an instruction-violation rate. The record identifies Zhipu AI as model provider and Irregular as evaluator; the earlier grouped Irregular record also identifies that evaluator explicitly.
 
+## OpenAI follow-up reviewed on 11 November
+
+The [10 November report](https://alignment.openai.com/misalignment-reports/using-peers-work-to-gain-unauthorized-access-to-openai-research-infrastructure/) adds a 19 July event to the existing Hugging Face record. It describes two later ExploitGym runs that reused earlier agents’ work and gained access to OpenAI’s research infrastructure. The Hugging Face production intrusion retains its 9–13 July window. The later internal access is recorded separately from the security alert that led investigators to the earlier compromise.
+
 ## Sources and attribution
 
 Prefer first-party disclosures, affected-organisation accounts and original independent investigations. Link to verified original publisher pages rather than syndicated copies; record reading/access limitations in evidence notes. For secondary reporting, prefer Reuters and Associated Press where their inspected coverage supports the same claims. Keep other reputable outlets for original reporting, local expertise or facts not covered by those wires; remove redundant rewrites and source indexes. A source’s contribution and direct access to evidence matter more than the number of links.

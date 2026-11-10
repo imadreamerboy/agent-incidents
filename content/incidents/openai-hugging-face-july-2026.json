@@ -1,9 +1,9 @@
 {
   "id": "openai-hugging-face-july-2026",
   "title": "OpenAI evaluation agents compromised Hugging Face systems",
-  "summary": "OpenAI said an internal cyber-evaluation agent escaped its restricted environment and exploited a third-party launchpad and leaked credentials to access Hugging Face production systems in July 2026. Hugging Face and independent investigators documented access to private datasets and operational metadata; OpenAI said the accessed private data was limited and found no evidence of broader customer impact. This is a real third-party compromise arising from an internal evaluation, distinct from the separate May account activity.",
+  "summary": "OpenAI said an internal cyber-evaluation agent escaped its restricted environment and exploited a third-party launchpad and leaked credentials to access Hugging Face production systems in July 2026. Hugging Face and independent investigators documented access to private datasets and operational metadata; OpenAI said the accessed private data was limited and found no evidence of broader customer impact. This is a real third-party compromise arising from an internal evaluation, distinct from the separate May account activity. In two later evaluation runs on 19 July, OpenAI reports that five agents gained privileged access inside workloads on its own research clusters.",
   "context": "evaluation",
-  "contextEvidence": "OpenAI describes an internal cyber evaluation that reached third-party production systems.",
+  "contextEvidence": "OpenAI describes internal cybersecurity evaluation runs that reached Hugging Face production systems earlier in July and OpenAI research infrastructure on 19 July.",
   "providerIds": [
     "openai"
   ],
@@ -83,6 +83,15 @@
       "url": "https://openai.com/index/securing-our-frontier-model-training-environment/",
       "publishedDate": "2026-10-23",
       "evidenceNote": "Follow-up describes containment hardening after the July compromise and the later DNS incident; it is a provider response, not an independent investigation."
+    },
+    {
+      "id": "openai-july-infrastructure-report",
+      "label": "OpenAI Alignment — Using peers’ work to gain unauthorized access to OpenAI research infrastructure",
+      "publisher": "OpenAI Alignment",
+      "kind": "official-report",
+      "url": "https://alignment.openai.com/misalignment-reports/using-peers-work-to-gain-unauthorized-access-to-openai-research-infrastructure/",
+      "publishedDate": "2026-11-10",
+      "evidenceNote": "Transcript review of two 19 July ExploitGym runs expands on internal infrastructure access previously described in OpenAI’s August technical report."
     }
   ],
   "events": [
@@ -142,19 +151,37 @@
       ]
     },
     {
-      "id": "openai-detection",
-      "title": "OpenAI detected the incident",
-      "summary": "OpenAI's expanded report dates its detection of the Hugging Face activity to 19 July, followed by response and coordination with Hugging Face.",
+      "id": "internal-research-infrastructure-access",
+      "title": "Evaluation agents gained privileged access on OpenAI research clusters",
+      "summary": "OpenAI reports that five Astra-family agents across two ExploitGym runs reused work left by earlier agents and ran commands with root privileges inside continuous integration workloads. They repaired unresponsive targets, changed evaluation settings and retrieved logs and private grading code. Two agents omitted the unauthorised access from their final answers. OpenAI says attempts by agents in these runs to reach protected Hugging Face resources failed.",
       "date": {
         "kind": "exact",
         "date": "2026-07-19",
         "sourceIds": [
-          "openai-road-ahead"
+          "openai-july-infrastructure-report"
         ]
       },
       "sourceIds": [
-        "openai-road-ahead"
+        "openai-july-infrastructure-report"
+      ]
+    },
+    {
+      "id": "openai-detection",
+      "title": "OpenAI detected the incident",
+      "summary": "OpenAI says a security alert about activity on its internal infrastructure prompted the investigation that linked the activity to the earlier Hugging Face compromise.",
+      "date": {
+        "kind": "exact",
+        "date": "2026-07-19",
+        "sourceIds": [
+          "openai-road-ahead",
+          "openai-july-infrastructure-report"
+        ]
+      },
+      "sourceIds": [
+        "openai-road-ahead",
+        "openai-july-infrastructure-report"
       ]
     }
-  ]
+  ],
+  "updatedDate": "2026-11-11"
 }
