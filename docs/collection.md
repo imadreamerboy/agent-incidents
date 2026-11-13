@@ -4,7 +4,7 @@ Initial content added for local review on 27 September 2026, using the source re
 
 ## Inclusion and dates
 
-The current local selection contains 34 parent incidents, 61 events and 73 source entries. It includes deployed-agent reports, evaluations that affected external systems, and selected OpenAI training and internal-deployment cases. Controlled experiments are described as such. Operator accounts remain attributed, and evaluation conditions are stated. Imprecise dates remain in the main chronology, ordered by their earliest known date while preserving their written precision. Only dates without an ordering anchor appear separately; publication dates never stand in for occurrence dates.
+The current local selection contains 36 parent incidents, 69 events and 79 source entries. It includes deployed-agent reports, evaluations that affected external systems, and selected OpenAI training and internal-deployment cases. Controlled experiments are described as such. Operator accounts remain attributed, and evaluation conditions are stated. Imprecise dates remain in the main chronology, ordered by their earliest known date while preserving their written precision. Only dates without an ordering anchor appear separately; publication dates never stand in for occurrence dates.
 
 On 27 September the curator expanded the collection to the reports in OpenAI’s [misalignment catalogue](https://alignment.openai.com/misalignment-reports/), including occurrences in 2025 and controlled training cases. The page title therefore has no single-year restriction. These are selected report-level episodes or behaviour patterns, not a census of individual runs. Other discovery candidates and unresolved allegations still require an editorial decision and inspected sources. The explicitly requested user-image disclosure has an unknown occurrence date and year; a report in 2026 does not establish when its events happened.
 
@@ -63,9 +63,13 @@ The [WorkOS update](https://workos.com/security/bulletins/update-for-october-30t
 
 The [10 November report](https://alignment.openai.com/misalignment-reports/using-peers-work-to-gain-unauthorized-access-to-openai-research-infrastructure/) adds a 19 July event to the existing Hugging Face record. It describes two later ExploitGym runs that reused earlier agents’ work and gained access to OpenAI’s research infrastructure. The Hugging Face production intrusion retains its 9–13 July window. The later internal access is recorded separately from the security alert that led investigators to the earlier compromise.
 
-## Epoch AI report reviewed on 14 November
+## Reports reviewed on 14 November
 
 The [affected organisation’s report](https://epoch.ai/publications/incident-report-ai-agents-attempted-exploits-on-our-website) groups three related Trajectory Labs evaluation runs on 20, 23 and 26 October under one incident. Epoch did not give prior consent for the first run and agreed to the final staging experiment. The report dates to 13 November. The evaluator is known and the model provider remains unknown.
+
+The [Wikimedia Foundation investigation](https://wikimediafoundation.org/news/2026/10/05/openai-rogue-agent-activities-found-on-wikimedia-projects/) is a separate record from the DSEwiki episode. The Foundation attributes the activity to agents it believes OpenAI operated. The citation-tool edits and Etherpad attempts have unknown occurrence dates. The 7–11 May dates apply to the confirmed [Wikidata Query Service outage](https://wikitech.wikimedia.org/wiki/Incidents/2026-05-13_wdqs). The Foundation identifies agent traffic as a possible contributor.
+
+The [Astra shutdown report](https://alignment.openai.com/misalignment-reports/stopping-a-running-alignment-evaluation/) adds an 8 October event and a 12 November source to the existing Astra underperformance record. Astra disclosed that it had stopped the jobs. OpenAI suggests a possible relationship with the earlier pattern.
 
 ## Sources and attribution
 

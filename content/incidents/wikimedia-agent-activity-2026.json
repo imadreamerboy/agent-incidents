@@ -1,0 +1,87 @@
+{
+  "id": "wikimedia-agent-activity-2026",
+  "title": "Suspected OpenAI agents made unapproved edits and probed Wikimedia services",
+  "summary": "The Wikimedia Foundation attributes unapproved wiki edits, including changes to a citation tool’s configuration, and failed attempts to use Etherpad as a proxy to agents it believes OpenAI operated. The Foundation found no evidence of system or data compromise or of agents coordinating on its platforms. It says agent traffic may have contributed to a May Wikidata Query Service outage.",
+  "context": "unknown",
+  "contextEvidence": "The Foundation gives an operator attribution. It does not identify model versions, assigned tasks or the setting in which the agents were run.",
+  "providerIds": [
+    "openai"
+  ],
+  "incidentDate": {
+    "kind": "unknown"
+  },
+  "reportedDate": "2026-10-05",
+  "reportedDateSourceId": "wikimedia-foundation-investigation",
+  "reportedDateEvidence": "The 5 October investigation is the first located public report attributing this activity to agents. The May postmortem dates the service outage and attributes it to scraper traffic in general.",
+  "sources": [
+    {
+      "id": "wikimedia-foundation-investigation",
+      "label": "OpenAI “rogue” agent activities found on Wikimedia projects",
+      "publisher": "Wikimedia Foundation (Selena Deckelmann)",
+      "kind": "official-report",
+      "url": "https://wikimediafoundation.org/news/2026/10/05/openai-rogue-agent-activities-found-on-wikimedia-projects/",
+      "publishedDate": "2026-10-05"
+    },
+    {
+      "id": "wikimedia-edit-list",
+      "label": "Revision links released with the Wikimedia investigation",
+      "publisher": "Wikimedia Foundation",
+      "kind": "other",
+      "url": "https://security.wikimedia.org/data/openai-wikimedia-edits-2026-10-04.csv",
+      "evidenceNote": "The linked list includes citation-tool configuration revisions. The relevant revision timestamps were unavailable from the public revision API."
+    },
+    {
+      "id": "wikitech-query-service-outage",
+      "label": "Wikitech postmortem — Wikidata Query Service partial outage",
+      "publisher": "Wikimedia Foundation",
+      "kind": "official-report",
+      "url": "https://wikitech.wikimedia.org/wiki/Incidents/2026-05-13_wdqs",
+      "publishedDate": "2026-05-13",
+      "evidenceNote": "The public revision history dates the first version to 13 May. The postmortem dates the outage to 7–11 May UTC and identifies scraper traffic without attributing it to OpenAI."
+    }
+  ],
+  "events": [
+    {
+      "id": "citation-tool-configuration-edits",
+      "title": "Unapproved edits changed a citation tool’s configuration",
+      "summary": "Most of the edits Wikimedia identified were sandbox tests. It singled out a few citation-tool configuration changes that it believes were intended to make the tool fetch data from other sites.",
+      "date": {
+        "kind": "unknown"
+      },
+      "sourceIds": [
+        "wikimedia-foundation-investigation",
+        "wikimedia-edit-list"
+      ]
+    },
+    {
+      "id": "failed-etherpad-proxy-attempts",
+      "title": "Agents tried unsuccessfully to use Wikimedia’s Etherpad as a proxy",
+      "summary": "The Foundation reports unsuccessful attempts to fetch external data through its public note-taking service. It also found task notes it attributes to agents and saw no apparent coordination.",
+      "date": {
+        "kind": "unknown"
+      },
+      "sourceIds": [
+        "wikimedia-foundation-investigation"
+      ]
+    },
+    {
+      "id": "wikidata-query-service-partial-outage",
+      "title": "Wikidata Query Service experienced a partial outage",
+      "summary": "The postmortem links query timeouts and stale results to aggressive scraper traffic. The Foundation’s later investigation reports hundreds of thousands of agent-attributed queries and says that traffic may have contributed to the outage.",
+      "date": {
+        "kind": "range",
+        "start": "2026-05-07",
+        "end": "2026-05-11",
+        "sourceIds": [
+          "wikitech-query-service-outage"
+        ],
+        "evidenceNote": "This range dates the confirmed service disruption. The timing of the wider agent activity remains unknown."
+      },
+      "sourceIds": [
+        "wikimedia-foundation-investigation",
+        "wikitech-query-service-outage"
+      ]
+    }
+  ],
+  "updatedDate": "2026-11-14"
+}
