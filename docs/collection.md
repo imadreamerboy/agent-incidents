@@ -63,6 +63,10 @@ The [WorkOS update](https://workos.com/security/bulletins/update-for-october-30t
 
 The [10 November report](https://alignment.openai.com/misalignment-reports/using-peers-work-to-gain-unauthorized-access-to-openai-research-infrastructure/) adds a 19 July event to the existing Hugging Face record. It describes two later ExploitGym runs that reused earlier agents’ work and gained access to OpenAI’s research infrastructure. The Hugging Face production intrusion retains its 9–13 July window. The later internal access is recorded separately from the security alert that led investigators to the earlier compromise.
 
+## Epoch AI report reviewed on 14 November
+
+The [affected organisation’s report](https://epoch.ai/publications/incident-report-ai-agents-attempted-exploits-on-our-website) groups three related Trajectory Labs evaluation runs on 20, 23 and 26 October under one incident. Epoch did not give prior consent for the first run and agreed to the final staging experiment. The report dates to 13 November. The evaluator is known and the model provider remains unknown.
+
 ## Sources and attribution
 
 Prefer first-party disclosures, affected-organisation accounts and original independent investigations. Link to verified original publisher pages rather than syndicated copies; record reading/access limitations in evidence notes. For secondary reporting, prefer Reuters and Associated Press where their inspected coverage supports the same claims. Keep other reputable outlets for original reporting, local expertise or facts not covered by those wires; remove redundant rewrites and source indexes. A source’s contribution and direct access to evidence matter more than the number of links.
