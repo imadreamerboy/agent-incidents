@@ -7,5 +7,6 @@
   { "id": "tencent", "name": "Tencent" },
   { "id": "zhipu-ai", "name": "Zhipu AI" },
   { "id": "irregular", "name": "Irregular" },
+  { "id": "trajectory-labs", "name": "Trajectory Labs" },
   { "id": "unknown", "name": "Unknown provider" }
 ]

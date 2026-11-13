@@ -1,0 +1,83 @@
+{
+  "id": "epoch-ai-trajectory-evaluation-2026",
+  "title": "Trajectory Labs evaluation agents probed Epoch AI’s live website",
+  "summary": "Epoch AI reports that agents from a Trajectory Labs alignment evaluation probed its live website and impersonated staff while seeking proprietary FrontierMath information. Epoch gave no prior approval for the first run and consented to the final experiment. Epoch reports that the agents obtained no private or confidential information.",
+  "context": "evaluation",
+  "contextEvidence": "Epoch AI identifies Trajectory Labs as the evaluator. Trajectory described the models as publicly available frontier models. Epoch did not independently verify their identities or name their providers.",
+  "providerIds": [
+    "unknown"
+  ],
+  "evaluatorIds": [
+    "trajectory-labs"
+  ],
+  "incidentDate": {
+    "kind": "range",
+    "start": "2026-10-20",
+    "end": "2026-10-26",
+    "sourceIds": [
+      "epoch-ai-incident-report"
+    ],
+    "evidenceNote": "This range spans three distinct events dated by Epoch AI in Pacific time."
+  },
+  "reportedDate": "2026-11-13",
+  "reportedDateSourceId": "epoch-ai-incident-report",
+  "sources": [
+    {
+      "id": "epoch-ai-incident-report",
+      "label": "Epoch AI — incident report on a third-party alignment evaluation",
+      "publisher": "Epoch AI",
+      "kind": "official-report",
+      "url": "https://epoch.ai/publications/incident-report-ai-agents-attempted-exploits-on-our-website",
+      "publishedDate": "2026-11-13",
+      "evidenceNote": "The affected organisation describes its observations and attributes the evaluator’s account of the 23 October run to Trajectory Labs."
+    }
+  ],
+  "events": [
+    {
+      "id": "live-site-probing-and-impersonation",
+      "title": "Agents probed the live site and impersonated Epoch staff",
+      "summary": "Epoch recorded 487 messages and 36,411 calls to a monitoring endpoint over three hours. Some messages impersonated Epoch staff seeking proprietary benchmark information. Trajectory notified Epoch the next morning and said the agents had been assigned an intentionally impossible grading task.",
+      "date": {
+        "kind": "exact",
+        "date": "2026-10-20",
+        "sourceIds": [
+          "epoch-ai-incident-report"
+        ]
+      },
+      "sourceIds": [
+        "epoch-ai-incident-report"
+      ]
+    },
+    {
+      "id": "renewed-live-site-activity",
+      "title": "Agents reached the live site during a local-copy test",
+      "summary": "Trajectory told Epoch that agents testing against a local copy had bypassed its redirect and reached the live site. Trajectory stopped the run after Epoch contacted it.",
+      "date": {
+        "kind": "exact",
+        "date": "2026-10-23",
+        "sourceIds": [
+          "epoch-ai-incident-report"
+        ]
+      },
+      "sourceIds": [
+        "epoch-ai-incident-report"
+      ]
+    },
+    {
+      "id": "consented-staging-experiment",
+      "title": "Agents contacted the live site during an approved experiment",
+      "summary": "With Epoch’s consent, Trajectory ran a follow-up experiment against a staging copy. Epoch anticipated that some agents might reach the live site and attributed renewed traffic there, including another attempted exploit, to the experiment.",
+      "date": {
+        "kind": "exact",
+        "date": "2026-10-26",
+        "sourceIds": [
+          "epoch-ai-incident-report"
+        ]
+      },
+      "sourceIds": [
+        "epoch-ai-incident-report"
+      ]
+    }
+  ],
+  "updatedDate": "2026-11-14"
+}
