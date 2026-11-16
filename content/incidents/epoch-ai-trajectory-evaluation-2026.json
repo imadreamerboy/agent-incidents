@@ -1,11 +1,11 @@
 {
   "id": "epoch-ai-trajectory-evaluation-2026",
   "title": "Trajectory Labs evaluation agents probed Epoch AI’s live website",
-  "summary": "Epoch AI reports that agents from a Trajectory Labs alignment evaluation probed its live website and impersonated staff while seeking proprietary FrontierMath information. Epoch gave no prior approval for the first run and consented to the final experiment. Epoch reports that the agents obtained no private or confidential information.",
+  "summary": "Epoch AI reports that agents from a Trajectory Labs alignment evaluation probed its live website and impersonated staff while seeking proprietary FrontierMath information. Epoch gave no prior approval for the first run and consented to the final experiment. Epoch reports that the agents obtained no private or confidential information. Trajectory Labs identified the model as Google’s Gemini 4 Argon.",
   "context": "evaluation",
-  "contextEvidence": "Epoch AI identifies Trajectory Labs as the evaluator. Trajectory described the models as publicly available frontier models. Epoch did not independently verify their identities or name their providers.",
+  "contextEvidence": "Trajectory Labs identifies Gemini 4 Argon as the model used in the three reported live-site episodes and says its standard API safeguards were enabled. Epoch AI did not independently verify the model identity. Trajectory designed the test around an impossible task and instructed agents to persist, so the results do not establish how often this happens in ordinary use.",
   "providerIds": [
-    "unknown"
+    "google"
   ],
   "evaluatorIds": [
     "trajectory-labs"
@@ -30,6 +30,24 @@
       "url": "https://epoch.ai/publications/incident-report-ai-agents-attempted-exploits-on-our-website",
       "publishedDate": "2026-11-13",
       "evidenceNote": "The affected organisation describes its observations and attributes the evaluator’s account of the 23 October run to Trajectory Labs."
+    },
+    {
+      "id": "trajectory-epoch-incident-response",
+      "label": "Trajectory Labs — Responding to incidents during misalignment testing",
+      "publisher": "Trajectory Labs",
+      "kind": "official-report",
+      "url": "https://www.trajectorylabs.com/blog/responding-to-incidents-during-misalignment-testing",
+      "publishedDate": "2026-11-13",
+      "evidenceNote": "The evaluator identifies Gemini 4 Argon and gives its account of the three live-site episodes and the response."
+    },
+    {
+      "id": "trajectory-gemini-4-argon-behaviour",
+      "label": "Trajectory Labs — Gemini 4 Argon’s behavior during misalignment testing",
+      "publisher": "Trajectory Labs",
+      "kind": "official-report",
+      "url": "https://www.trajectorylabs.com/blog/gemini-4-argon-behavior-during-misalignment-testing",
+      "publishedDate": "2026-11-13",
+      "evidenceNote": "The companion report describes the model, safeguards and task conditions, and distinguishes the live-site episodes from a separate offline experiment."
     }
   ],
   "events": [
@@ -45,7 +63,8 @@
         ]
       },
       "sourceIds": [
-        "epoch-ai-incident-report"
+        "epoch-ai-incident-report",
+        "trajectory-epoch-incident-response"
       ]
     },
     {
@@ -60,7 +79,8 @@
         ]
       },
       "sourceIds": [
-        "epoch-ai-incident-report"
+        "epoch-ai-incident-report",
+        "trajectory-epoch-incident-response"
       ]
     },
     {
@@ -75,9 +95,10 @@
         ]
       },
       "sourceIds": [
-        "epoch-ai-incident-report"
+        "epoch-ai-incident-report",
+        "trajectory-epoch-incident-response"
       ]
     }
   ],
-  "updatedDate": "2026-11-14"
+  "updatedDate": "2026-11-16"
 }
