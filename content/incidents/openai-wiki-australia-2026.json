@@ -15,7 +15,7 @@
       "rowan-unctad-research",
       "collusion-research"
     ],
-    "evidenceNote": "The grouped activity window runs from the first reviewed UNCTAD scan on 13 April to residual DSEwiki edits on 2 July. Each event retains its own dates. This editorial grouping does not establish continuous activity or a shared agent run; later notification events retain their September dates."
+    "evidenceNote": "The grouped activity window runs from the first reviewed UNCTAD scan on 13 April to residual DSEwiki edits on 2 July. Each event retains its own dates. This editorial grouping does not establish continuous activity or a shared agent run; later notification and response events retain their own dates."
   },
   "reportedDate": "2026-09-04",
   "reportedDateSourceId": "collusion-research",
@@ -119,6 +119,24 @@
       "url": "https://www.wsj.com/tech/ai/openai-agents-used-aggressive-techniques-to-access-u-n-website-522c70ff",
       "publishedDate": "2026-09-26",
       "evidenceNote": "Original WSJ page displays 26 September 2026 at 8:14 pm ET; its publication metadata is 27 September at 00:14 UTC. Use the displayed publisher date. The inspected headline, deck and opening paragraphs link Rowan Howard-Jones’s UNCTAD research; the remainder is paywalled. The deck reports more than 16,000 accesses, not 16,000 separate incidents."
+    },
+    {
+      "id": "australian-government-rapid-review-response",
+      "label": "Australian Government — Strengthening Australia against AI-driven cyber incidents",
+      "publisher": "Prime Minister of Australia and joint ministers",
+      "kind": "official-report",
+      "url": "https://www.pm.gov.au/media/strengthening-australia-against-ai-driven-cyber-incidents",
+      "publishedDate": "2026-11-10",
+      "evidenceNote": "The joint release links the review to the Medicare statistics portal incident and announces the release and acceptance of the recommendations."
+    },
+    {
+      "id": "pmc-rapid-review-recommendations",
+      "label": "Australian Rapid Review — recommendations for AI-driven cyber incidents",
+      "publisher": "Australian Department of the Prime Minister and Cabinet",
+      "kind": "official-report",
+      "url": "https://www.pmc.gov.au/resources/rapid-review-australian-government-arrangements-ai-driven-cyber-incident/rapid-review-australian-government-arrangements-ai-driven-cyber-incident-recommendations",
+      "publishedDate": "2026-11-10",
+      "evidenceNote": "The 10 November joint release dates the public release of these recommendations. Recommendation 3 calls for considering time-bound mandatory reporting."
     }
   ],
   "events": [
@@ -229,6 +247,23 @@
         "pm-transcript",
         "abc-followup"
       ]
+    },
+    {
+      "id": "australian-rapid-review-recommendations",
+      "title": "Australian Government accepted the Rapid Review recommendations",
+      "summary": "The government released and accepted 18 recommendations after its review of the Medicare statistics portal incident. The recommendations include considering mandatory, time-bound AI safety reporting and improving coordination between agencies during AI-related incidents.",
+      "date": {
+        "kind": "exact",
+        "date": "2026-11-10",
+        "sourceIds": [
+          "australian-government-rapid-review-response"
+        ]
+      },
+      "sourceIds": [
+        "australian-government-rapid-review-response",
+        "pmc-rapid-review-recommendations"
+      ]
     }
-  ]
+  ],
+  "updatedDate": "2026-11-16"
 }
