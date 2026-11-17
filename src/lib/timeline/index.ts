@@ -3,7 +3,7 @@ import type { Incident, IncidentDate, IncidentEvent, Provider, Source } from '..
 export type Mode = 'incident' | 'reported';
 export type Order = 'asc' | 'desc';
 export const CONTEXT_LABELS = { 'external-deployment': 'External deployment', 'internal-deployment': 'Internal deployment', training: 'Training', evaluation: 'Evaluation', mixed: 'Mixed contexts', unknown: 'Unknown context' } as const;
-export type ViewState = { mode: Mode; order: Order; providerIds: string[] };
+export type ViewState = { mode: Mode; order: Order; providerIds: string[]; year?: string; month?: string };
 export type IncidentGroup = { id: 'dated' | 'unknown'; label: string | null; incidents: Incident[] };
 export type EventGroup = { id: 'dated' | 'unknown'; label: string | null; events: IncidentEvent[] };
 export type ReportEntry = { id: string; incident: Incident; source: Source };
@@ -12,7 +12,7 @@ export type ReportMonthGroup = { id: string; month: string | null; label: string
 
 export function parseView(search: URLSearchParams, providers: Provider[]): { state: ViewState; error: string | null } {
   const initial: ViewState = { mode: 'incident', order: 'desc', providerIds: [] };
-  for (const key of ['mode', 'order', 'providers']) {
+  for (const key of ['mode', 'order', 'providers', 'year', 'month']) {
     if (search.getAll(key).length > 1) return { state: initial, error: `Unrecognised filter: repeated ${key} parameter.` };
   }
   const mode = search.get('mode') ?? 'incident';
@@ -26,7 +26,18 @@ export function parseView(search: URLSearchParams, providers: Provider[]): { sta
   if (search.has('q') || search.has('context')) {
     return { state: initial, error: 'Search is not available in this timeline preview.' };
   }
-  return { state: { mode, order, providerIds: [...new Set(ids)].sort() }, error: null };
+  const state: ViewState = { mode, order, providerIds: [...new Set(ids)].sort() };
+  const year = search.get('year');
+  const month = search.get('month');
+  if (year !== null) {
+    if (!/^\d{4}$/.test(year)) return { state, error: 'Unrecognised filter: choose a four-digit year.' };
+    state.year = year;
+  }
+  if (month !== null) {
+    if (!year || !/^(0[1-9]|1[0-2])$/.test(month)) return { state, error: 'Unrecognised filter: choose a year and a month from 01 to 12.' };
+    state.month = month;
+  }
+  return { state, error: null };
 }
 
 export function serializeView(state: ViewState): URLSearchParams {
@@ -34,6 +45,8 @@ export function serializeView(state: ViewState): URLSearchParams {
   if (state.mode !== 'incident') search.set('mode', state.mode);
   if (state.order !== 'desc') search.set('order', state.order);
   if (state.providerIds.length) search.set('providers', [...new Set(state.providerIds)].sort().join(','));
+  if (state.year) search.set('year', state.year);
+  if (state.month) search.set('month', state.month);
   return search;
 }
 
@@ -57,6 +70,34 @@ export function chronologyDate(date: IncidentDate): string | null {
     case 'approximate': return date.sortDate ?? null;
     case 'unknown': return null;
   }
+}
+
+/** Each dated incident occupies one bin. In Reports each dated source occupies one bin. */
+export function dateHistogram(incidents: Incident[], mode: Mode): Record<string, number[]> {
+  const years: Record<string, number[]> = {};
+  function count(date: string | null | undefined) {
+    if (!date) return;
+    const year = date.slice(0, 4);
+    const months = years[year] ??= Array<number>(12).fill(0);
+    months[Number(date.slice(5, 7)) - 1]++;
+  }
+  for (const incident of incidents) {
+    if (mode === 'incident') count(chronologyDate(incident.incidentDate));
+    else for (const source of incident.sources) count(source.publishedDate);
+  }
+  return years;
+}
+
+export function filterTimelineDate(incidents: Incident[], mode: Mode, year?: string, month?: string): Incident[] {
+  if (!year) return incidents;
+  const prefix = month ? `${year}-${month}-` : `${year}-`;
+  if (mode === 'incident') {
+    return incidents.filter((incident) => chronologyDate(incident.incidentDate)?.startsWith(prefix));
+  }
+  return incidents.flatMap((incident) => {
+    const sources = incident.sources.filter((source) => source.publishedDate?.startsWith(prefix));
+    return sources.length ? [{ ...incident, sources }] : [];
+  });
 }
 
 export function groupIncidents(incidents: Incident[], order: Order = 'desc'): IncidentGroup[] {

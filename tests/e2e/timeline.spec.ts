@@ -175,6 +175,8 @@ test('keyboard controls retain focus and expose selection', async ({ page, brows
   await page.keyboard.press(nextControl);
   await expect(page.getByRole('button', { name: 'Oldest first', exact: true })).toBeFocused();
   await page.keyboard.press(nextControl);
+  await expect(page.getByRole('button', { name: 'All time', exact: true })).toBeFocused();
+  await page.getByRole('button', { name: 'All providers and evaluators', exact: true }).focus();
   await page.keyboard.press(nextControl);
   await page.keyboard.press('Space');
   await expect(page.getByRole('button', { name: 'Example lab A', exact: true })).toHaveAttribute('aria-pressed', 'true');

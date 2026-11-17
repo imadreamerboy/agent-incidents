@@ -1,7 +1,7 @@
 import { beforeAll, describe, expect, it } from 'vitest';
 import type { Incident, IncidentEvent, Provider } from '../../src/lib/content/schema';
 import { loadCollection } from '../../src/lib/server/content';
-import { chronologyDate, filterIncidents, formatDate, formatIncidentDate, groupIncidents, groupReports, groupReportMonths, groupEvents, parseView, serializeView, toggleProvider } from '../../src/lib/timeline';
+import { chronologyDate, dateHistogram, filterTimelineDate, filterIncidents, formatDate, formatIncidentDate, groupIncidents, groupReports, groupReportMonths, groupEvents, parseView, serializeView, toggleProvider } from '../../src/lib/timeline';
 
 let incidents: Incident[];
 let providers: Provider[];
@@ -90,6 +90,47 @@ describe('shareable URL state', () => {
   });
   it.each(['mode=other', 'mode=', 'order=other', 'order=', 'order=asc&order=desc', 'order=asc&order=asc', 'providers=', 'providers=missing', 'providers=example-lab-a,', 'mode=incident&mode=reported', 'providers=example-lab-a&providers=example-lab-b'])('rejects invalid or ambiguous query %s', (query) => {
     expect(parseView(new URLSearchParams(query), providers).error).toMatch(/Unrecognised filter/);
+  });
+});
+
+describe('date filters and histogram', () => {
+  it.each(['year=26', 'year=', 'month=09', 'year=2026&month=9', 'year=2026&month=00', 'year=2026&month=13', 'year=2025&year=2026', 'year=2026&month=04&month=05'])('rejects an invalid period %s', (query) => {
+    expect(parseView(new URLSearchParams(query), providers).error).toMatch(/Unrecognised filter/);
+  });
+  it.each(['year=2026', 'year=2026&month=09'])('round-trips %s alongside the other filters', (period) => {
+    const query = `mode=reported&order=asc&providers=example-lab-a&${period}`;
+    const { state, error } = parseView(new URLSearchParams(query), providers);
+    expect(error).toBeNull();
+    expect(serializeView(state).toString()).toBe(query);
+  });
+  it('bins each incident at its chronology anchor and leaves unanchored records in all time', () => {
+    const dates: Incident['incidentDate'][] = [
+      { kind: 'exact', date: '2025-12-28', sourceIds: ['s'] },
+      { kind: 'range', start: '2025-12-31', end: '2026-01-04', sourceIds: ['s'] },
+      { kind: 'month', month: '2026-03', sourceIds: ['s'] },
+      { kind: 'approximate', label: 'Late March', sortDate: '2026-03-25', sourceIds: ['s'] },
+      { kind: 'approximate', label: 'Before the report', sourceIds: ['s'] },
+      { kind: 'unknown' }
+    ];
+    const records = dates.map((incidentDate) => ({ ...incidents[0], incidentDate }));
+    expect(dateHistogram(records, 'incident')).toEqual({
+      '2025': [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2],
+      '2026': [0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+    });
+    expect(filterTimelineDate(records, 'incident')).toEqual(records);
+    expect(filterTimelineDate(records, 'incident', '2025')).toEqual(records.slice(0, 2));
+    expect(filterTimelineDate(records, 'incident', '2026', '03')).toEqual(records.slice(2, 4));
+    expect(filterTimelineDate(records, 'incident', '2026', '01')).toEqual([]);
+  });
+  it('counts individual publications and narrows source lists without mutating the full incident', () => {
+    const records = incidents.filter((incident) => ['example-incident-a', 'example-incident-b'].includes(incident.id));
+    expect(dateHistogram(records, 'reported')).toEqual({ '2026': [0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 1, 0] });
+    const november = filterTimelineDate(records, 'reported', '2026', '11');
+    expect(ids(november)).toEqual(['example-incident-a']);
+    expect(november[0].sources.map((source) => source.id)).toEqual(['example-follow-up']);
+    expect(groupReports(filterTimelineDate(records, 'reported', '2026')).map((group) => group.date)).toEqual(['2026-11-18', '2026-09-20', '2026-09-18']);
+    expect(groupReports(filterTimelineDate(records, 'reported')).at(-1)?.date).toBeNull();
+    expect(records.find((incident) => incident.id === 'example-incident-a')!.sources).toHaveLength(3);
   });
 });
 

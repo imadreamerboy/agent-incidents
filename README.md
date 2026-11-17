@@ -4,6 +4,8 @@ A sourced timeline of unexpected AI-agent actions. Incident dates and reporting 
 
 This repository contains the website and its reviewed content: the timeline, About and methodology, Roadmap, and tip/correction page.
 
+Select a year on the timeline to see its monthly counts, then select a month to narrow the list. The bars follow the provider and evaluator filters. Incidents count once, in their chronology month (the start month for ranges). Reports count each source by its publication month. Undated entries appear under All time.
+
 On wide screens, a compact jump rail shows your position in the timeline. In Incidents, each mark previews an entry's title and date. In Reports, each mark previews a publication month and source count, then jumps to that month's first report. Undated sources have a separate mark. The rail follows the selected filters, date view and sort order.
 
 ## Run locally

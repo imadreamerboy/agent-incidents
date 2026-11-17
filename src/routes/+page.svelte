@@ -3,7 +3,8 @@
   import { page } from '$app/state';
   import { afterNavigate, pushState, replaceState } from '$app/navigation';
   import type { Incident, Provider } from '$lib/content/schema';
-  import { filterIncidents, formatIncidentDate, groupIncidents, groupReportMonths, parseView, serializeView, toggleProvider, type ViewState } from '$lib/timeline';
+  import { dateHistogram, filterTimelineDate, filterIncidents, formatIncidentDate, groupIncidents, groupReportMonths, parseView, serializeView, toggleProvider, type ViewState } from '$lib/timeline';
+  import DateHistogram from '$lib/components/DateHistogram.svelte';
   import ChronologyControl from '$lib/components/ChronologyControl.svelte';
   import ProviderFilters from '$lib/components/ProviderFilters.svelte';
   import Timeline from '$lib/components/Timeline.svelte';
@@ -19,7 +20,9 @@
   let parsed = $derived(currentUrl ? parseView(new URL(currentUrl).searchParams, data.providers) : { state: defaultState, error: null });
   let view = $derived(parsed.state);
   let viewError = $derived(parsed.error);
-  let incidents = $derived(viewError ? [] : filterIncidents(data.incidents, view.providerIds));
+  let providerIncidents = $derived(viewError ? [] : filterIncidents(data.incidents, view.providerIds));
+  let counts = $derived(dateHistogram(providerIncidents, view.mode));
+  let incidents = $derived(filterTimelineDate(providerIncidents, view.mode, view.year, view.month));
   let jumpItems = $derived(view.mode === 'reported'
     ? groupReportMonths(incidents, view.order).map((group) => ({
         id: group.id, label: group.label, date: `${group.sourceCount} ${group.sourceCount === 1 ? 'source' : 'sources'}`
@@ -28,7 +31,7 @@
         id: incident.id, label: incident.title, date: group.label ?? formatIncidentDate(incident.incidentDate)
       }))));
   let noun = $derived(data.demo ? 'examples' : 'incidents');
-  let filtered = $derived(!!view.providerIds.length);
+  let filtered = $derived(!!view.providerIds.length || !!view.year);
   let incidentCount = $derived(filtered ? `${incidents.length} of ${data.incidents.length} ${noun}` : `${incidents.length} ${incidents.length === 1 ? (data.demo ? 'example' : 'incident') : noun}`);
   let sourceCount = $derived(incidents.reduce((total, incident) => total + incident.sources.length, 0));
   let totalSources = $derived(data.incidents.reduce((total, incident) => total + incident.sources.length, 0));
@@ -43,6 +46,8 @@
     url.searchParams.delete('mode');
     url.searchParams.delete('providers');
     url.searchParams.delete('order');
+    url.searchParams.delete('year');
+    url.searchParams.delete('month');
     url.searchParams.delete('q');
     url.searchParams.delete('context');
     for (const [key, value] of serializeView(next)) url.searchParams.set(key, value);
@@ -50,14 +55,14 @@
   }
 
   function incidentHref(id: string): string {
-    const url = viewUrl({ ...view, mode: 'incident' });
+    const url = viewUrl({ ...view, mode: 'incident', year: undefined, month: undefined });
     url.hash = id;
     return `${url.pathname}${url.search}${url.hash}`;
   }
 
   function changeView(next: ViewState) {
     const url = viewUrl(next);
-    if (next.mode !== view.mode) url.hash = '';
+    if (next.mode !== view.mode || next.year !== view.year || next.month !== view.month) url.hash = '';
     if (url.href !== window.location.href) {
       pushState(url, page.state);
       readBrowserUrl();
@@ -157,6 +162,8 @@
         </svg>
       </button>
     </div>
+    <DateHistogram {counts} year={view.year} month={view.month} mode={view.mode} disabled={!mounted || !!viewError}
+      onchange={(year, month) => changeView({ ...view, year, month })} />
     <div class="filter-row">
       <ProviderFilters providers={visibleProviders} {evaluatorOnlyIds} selected={view.providerIds} disabled={!mounted || !!viewError} ontoggle={(id) => changeView({ ...view, providerIds: toggleProvider(view.providerIds, id) })} onreset={() => changeView({ ...view, providerIds: [] })} />
       {#if !viewError}<span class="result-count" aria-hidden="true">{count}</span>{/if}
@@ -184,7 +191,7 @@
     {:else if incidents.length === 0}
       <section class="empty-state" aria-labelledby="no-matches">
         <h2 id="no-matches">No {noun} match the selected filters.</h2>
-        <button class="text-button" type="button" onclick={() => changeView({ ...view, providerIds: [] })}>Reset filters</button>
+        <button class="text-button" type="button" onclick={() => changeView({ ...view, providerIds: [], year: undefined, month: undefined })}>Reset filters</button>
       </section>
     {:else}
       {#if view.mode === 'reported'}
