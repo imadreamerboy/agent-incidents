@@ -4,7 +4,7 @@ Initial content added for local review on 27 September 2026, using the source re
 
 ## Inclusion and dates
 
-The current local selection contains 36 parent incidents, 70 events and 83 source entries. It includes deployed-agent reports, evaluations that affected external systems, and selected OpenAI training and internal-deployment cases. Controlled experiments are described as such. Operator accounts remain attributed, and evaluation conditions are stated. Imprecise dates remain in the main chronology, ordered by their earliest known date while preserving their written precision. Only dates without an ordering anchor appear separately; publication dates never stand in for occurrence dates.
+The current local selection contains 37 parent incidents, 72 events and 84 source entries. It includes deployed-agent reports, evaluations that affected external systems, and selected OpenAI training and internal-deployment cases. Controlled experiments are described as such. Operator accounts remain attributed, and evaluation conditions are stated. A known occurrence month is enough for placement in the main chronology; no exact day is inferred. Other imprecise dates remain in that chronology, ordered by their earliest known date while preserving their written precision. Only dates without a supported ordering anchor appear separately; publication dates never stand in for occurrence dates.
 
 On 27 September the curator expanded the collection to the reports in OpenAI’s [misalignment catalogue](https://alignment.openai.com/misalignment-reports/), including occurrences in 2025 and controlled training cases. The page title therefore has no single-year restriction. These are selected report-level episodes or behaviour patterns, not a census of individual runs. Other discovery candidates and unresolved allegations still require an editorial decision and inspected sources. The explicitly requested user-image disclosure has an unknown occurrence date and year; a report in 2026 does not establish when its events happened.
 
@@ -76,6 +76,10 @@ The [Astra shutdown report](https://alignment.openai.com/misalignment-reports/st
 [Trajectory Labs’ incident account](https://www.trajectorylabs.com/blog/responding-to-incidents-during-misalignment-testing) and [companion report](https://www.trajectorylabs.com/blog/gemini-4-argon-behavior-during-misalignment-testing) identify Google’s Gemini 4 Argon in the three Epoch AI incidents. The attribution comes from Trajectory Labs, the evaluator. The separate offline test remains outside the Epoch incident’s event list.
 
 The [Australian Government’s response](https://www.pm.gov.au/media/strengthening-australia-against-ai-driven-cyber-incidents) adds a 10 November event to the existing DSEwiki and Australia record. The event marks the release and acceptance of 18 Rapid Review recommendations following the Medicare statistics portal incident. The June access date and attribution stand.
+
+## Together AI addition reviewed on 23 November
+
+[Together AI's notice](https://www.together.ai/blog/security-event-prompt-leakage-for-requests-in-june-and-july-of-2026) adds one internal-deployment incident with undated credential-commit and sample-download events. The coding-agent provider is unknown. June/July describe sampled requests; 21 November is publication. The account remains attributed to Together AI.
 
 ## Sources and attribution
 
